@@ -4,6 +4,7 @@ FROM node:8.5.0
 RUN mkdir /vendor
 COPY package.json /vendor/package.json
 RUN cd /vendor; npm install
+ENV NODE_PATH /vendor/node_modules/
 
 # Copy app source
 VOLUME ['/www']
@@ -17,4 +18,4 @@ ENV PORT 8080
 # expose the port to outside world
 EXPOSE  8080
 
-ENTRYPOINT ["npm","install"]
+ENTRYPOINT ["npm","start"]
